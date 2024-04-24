@@ -17,5 +17,5 @@ export class LoginComponent {
 
     this.rota.navigate(['home']);
   }
-  
+
 }
