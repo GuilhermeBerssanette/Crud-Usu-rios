@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "crud-usuarios-angular-bf47e": {
+      "hosting": {
+        "crud-usuarios": [
+          "crud-usuarios-angular-bf47e"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "crud-usuarios-angular-bf47e"
+  }
+}
