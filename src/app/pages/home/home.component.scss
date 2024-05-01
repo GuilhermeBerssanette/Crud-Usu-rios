@@ -95,3 +95,9 @@ li{
     font-style: italic;
      color: #767676;
     }
+
+.pl-0 {
+        padding-left: 0 !important; /* Remover o preenchimento à esquerda */
+        border-left: none !important; /* Remover a borda à esquerda */
+    }
+    
