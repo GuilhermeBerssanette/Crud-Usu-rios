@@ -16,6 +16,7 @@ import {MatSortModule} from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { environment } from '../environments/environment.development';
 import { AngularFireModule} from '@angular/fire/compat';
+import { CrudComponent } from './pages/crud/crud.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { AngularFireModule} from '@angular/fire/compat';
     ButtonComponent,
     HomeComponent,
     MenuComponent,
+    CrudComponent,
     
     ],
   imports: [
