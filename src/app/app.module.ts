@@ -17,6 +17,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { environment } from '../environments/environment.development';
 import { AngularFireModule} from '@angular/fire/compat';
 import { CrudComponent } from './pages/crud/crud.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ModalViewUserComponent } from './pages/crud/modal-view-user/modal-view-user.component';
+
+
+
 
 
 @NgModule({
@@ -27,6 +33,7 @@ import { CrudComponent } from './pages/crud/crud.component';
     HomeComponent,
     MenuComponent,
     CrudComponent,
+    ModalViewUserComponent,
     
     ],
   imports: [
@@ -38,6 +45,11 @@ import { CrudComponent } from './pages/crud/crud.component';
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
+    MatFormFieldModule, 
+    MatInputModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule, 
     AngularFireModule.initializeApp(environment.firebaseConfig),
 
   ],
