@@ -20,6 +20,7 @@ import { CrudComponent } from './pages/crud/crud.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ModalViewUserComponent } from './pages/crud/modal-view-user/modal-view-user.component';
+import { MatDialogModule} from '@angular/material/dialog'
 
 
 
@@ -50,6 +51,7 @@ import { ModalViewUserComponent } from './pages/crud/modal-view-user/modal-view-
     MatTableModule,
     MatSortModule,
     MatPaginatorModule, 
+    MatDialogModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
 
   ],
