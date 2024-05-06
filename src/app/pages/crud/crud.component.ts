@@ -57,6 +57,15 @@ export class CrudComponent {
     //subscribe é uma inscrição que faz a conexão do Front com o Back
   }
 
+    deleteUsers(firebaseId: string) {
+      this.userService.deleteUser(firebaseId).then(
+        (response: any) => {
+          window.alert('Usuário excluido com sucesso')
+        }
+      )
+
+    }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -82,4 +91,14 @@ export class CrudComponent {
     }).afterClosed().subscribe(()=> this.getListUsers()); //Essa linha é utilizada para BD que não tem database real time 
   }
 
+  openModalEditUser(user: User) {
+    this.dialog.open(ModalFormUserComponent, {
+      width: '700px',
+      height: '400px',
+      data:user,
+    }).afterClosed().subscribe(()=> this.getListUsers()); //Essa linha é utilizada para BD que não tem database real time 
+  }
+
+
 }
+
