@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { User } from '../../interfaces/user';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalViewUserComponent } from './modal-view-user/modal-view-user.component';
+import { ModalFormUserComponent } from './modal-form-user/modal-form-user.component';
 
 @Component({
   selector: 'app-crud',
@@ -45,7 +46,9 @@ export class CrudComponent {
         this.listusers = response;
 
         this.dataSource = new MatTableDataSource<any>(this.listusers);
+        this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        this.paginator._intl.itemsPerPageLabel="Itens por página";
       },
       error: (err) => {
         console.error(err);
@@ -70,6 +73,13 @@ export class CrudComponent {
       height: '330px',
       data: user
     })
+  }
+
+  openModalAddUser() {
+    this.dialog.open(ModalFormUserComponent, {
+      width: '700px',
+      height: '400px'
+    }).afterClosed().subscribe(()=> this.getListUsers()); //Essa linha é utilizada para BD que não tem database real time 
   }
 
 }

@@ -6,13 +6,13 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { LoginComponent } from './pages/login/login.component';
 import { ButtonComponent } from './components/button/button.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
 import { MenuComponent } from './components/menu/menu.component';
-import {MatIconModule} from '@angular/material/icon'
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatTableModule} from '@angular/material/table';
-import {MatSortModule} from '@angular/material/sort';
+import { MatIconModule } from '@angular/material/icon'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule} from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { environment } from '../environments/environment.development';
 import { AngularFireModule} from '@angular/fire/compat';
@@ -20,7 +20,9 @@ import { CrudComponent } from './pages/crud/crud.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ModalViewUserComponent } from './pages/crud/modal-view-user/modal-view-user.component';
-import { MatDialogModule} from '@angular/material/dialog'
+import { MatDialogModule} from '@angular/material/dialog';
+import { ModalFormUserComponent } from './pages/crud/modal-form-user/modal-form-user.component'
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -35,6 +37,7 @@ import { MatDialogModule} from '@angular/material/dialog'
     MenuComponent,
     CrudComponent,
     ModalViewUserComponent,
+    ModalFormUserComponent,
     
     ],
   imports: [
@@ -52,6 +55,8 @@ import { MatDialogModule} from '@angular/material/dialog'
     MatSortModule,
     MatPaginatorModule, 
     MatDialogModule,
+    ReactiveFormsModule,
+    MatSelectModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
 
   ],
