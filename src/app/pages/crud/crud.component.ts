@@ -1,9 +1,9 @@
-import {Component, ViewChild} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { User } from '../../interfaces/user';
+import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalViewUserComponent } from './modal-view-user/modal-view-user.component';
 import { ModalFormUserComponent } from './modal-form-user/modal-form-user.component';
@@ -11,7 +11,7 @@ import { ModalFormUserComponent } from './modal-form-user/modal-form-user.compon
 @Component({
   selector: 'app-crud',
   templateUrl: './crud.component.html',
-  styleUrl: './crud.component.scss',
+  styleUrl: './crud.component.scss'
 })
 export class CrudComponent {
 
@@ -22,15 +22,14 @@ export class CrudComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor (
-    private userService: UsersService,
+  constructor(
+    private usersService: UsersService,
     public dialog: MatDialog,
-
-  ) {
+    ) {
     this.dataSource = new MatTableDataSource<any>(this.listusers);
   }
 
-  ngOnInit () {
+  ngOnInit() {
     this.getListUsers();
   }
 
@@ -39,10 +38,11 @@ export class CrudComponent {
     this.dataSource.sort = this.sort;
   }
 
+  // FUNÇÕES DOS USUÁRIOS
   getListUsers() {
-    this.userService.getAllUsers().subscribe({
+    this.usersService.getAllUsers().subscribe({
       next: (response: any) => {
-        console.log('lista de usuários firebase', response);
+
         this.listusers = response;
 
         this.dataSource = new MatTableDataSource<any>(this.listusers);
@@ -54,17 +54,16 @@ export class CrudComponent {
         console.error(err);
       }
     });
-    //subscribe é uma inscrição que faz a conexão do Front com o Back
   }
 
-    deleteUsers(firebaseId: string) {
-      this.userService.deleteUser(firebaseId).then(
-        (response: any) => {
-          window.alert('Usuário excluido com sucesso')
-        }
-      )
-
-    }
+  deleteUser(firebaseId: string) {
+    this.usersService.deleteUser(firebaseId).then(
+      (response: any) => {
+        window.alert('Usuário excluído com sucesso');
+      }
+    );
+  }
+  // FIM FUNÇÕES DOS USUÁRIOS
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -75,7 +74,7 @@ export class CrudComponent {
     }
   }
 
-  //Logica Modal
+  // LOGICA DO MODAL
   openModalViewUser(user: User) {
     this.dialog.open(ModalViewUserComponent, {
       width: '700px',
@@ -87,18 +86,16 @@ export class CrudComponent {
   openModalAddUser() {
     this.dialog.open(ModalFormUserComponent, {
       width: '700px',
-      height: '400px'
-    }).afterClosed().subscribe(()=> this.getListUsers()); //Essa linha é utilizada para BD que não tem database real time 
+      height: '410px'
+    }).afterClosed().subscribe(() => this.getListUsers() );
   }
 
   openModalEditUser(user: User) {
     this.dialog.open(ModalFormUserComponent, {
       width: '700px',
-      height: '400px',
-      data:user,
-    }).afterClosed().subscribe(()=> this.getListUsers()); //Essa linha é utilizada para BD que não tem database real time 
+      height: '410px',
+      data: user
+    }).afterClosed().subscribe(() => this.getListUsers() );
   }
 
-
 }
-

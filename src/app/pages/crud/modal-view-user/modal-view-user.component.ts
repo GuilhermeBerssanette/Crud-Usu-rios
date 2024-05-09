@@ -15,11 +15,9 @@ export class ModalViewUserComponent {
     public dialogRef: MatDialogRef<ModalViewUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-      this.userData = data;
-      console.log('Dados do usuário', this.userData);    
-
+    this.userData = data;
   }
 
-  closeModal() {this.dialogRef.close(); }
+  closeModal() { this.dialogRef.close(); }
 
 }

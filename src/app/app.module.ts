@@ -28,6 +28,7 @@ import {MatSelectModule} from '@angular/material/select';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import {MatSelectModule} from '@angular/material/select';
     CrudComponent,
     ModalViewUserComponent,
     ModalFormUserComponent,
+    
     
     ],
   imports: [
