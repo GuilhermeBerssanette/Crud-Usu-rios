@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UsersService } from '../../../services/users.service';
 import { User } from '../../../interfaces/user';
-import { FormControl } from '@angular/forms';
+
 @Component({
   selector: 'app-modal-form-user',
   templateUrl: './modal-form-user.component.html',
@@ -14,15 +14,15 @@ export class ModalFormUserComponent {
   planosSaude = [
     {
       id: 1,
-      descricao: 'Plano Basic'
+      descricao: 'Plano 300 Enfermaria'
     },
     {
       id: 2,
-      descricao: 'Plano Medium'
+      descricao: 'Plano 400 Enfermaria'
     },
     {
       id: 3,
-      descricao: 'Plano Plus'
+      descricao: 'Plano 500 Plus'
     }
   ];
 
@@ -40,20 +40,14 @@ export class ModalFormUserComponent {
       descricao: 'Plano Plus'
     },
   ];
-  
 
   formUser: FormGroup;
-  revisa: FormGroup;
   editUser: boolean = false;
- 
- 
-
 
   constructor(
     public dialogRef: MatDialogRef<ModalFormUserComponent>,
     private formBuilder: FormBuilder,
     private userService: UsersService,
-    
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
@@ -100,15 +94,13 @@ export class ModalFormUserComponent {
 
     buildForm() {
       this.formUser = this.formBuilder.group({
-          name: [null, [Validators.required, Validators.minLength(3)]],
-          email: [null, [Validators.required, Validators.email]],
-          
-          sector: [null, [Validators.required, Validators.minLength(2)]],
-          role: [null, [Validators.required, Validators.minLength(5)]],
-          healthPlan: [''],
-          dentalPlan: [''],
-        })
-     
+        name: [null, [Validators.required, Validators.minLength(3)]],
+        email: [null, [Validators.required, Validators.email]],
+        sector: [null, [Validators.required, Validators.minLength(2)]],
+        role: [null, [Validators.required, Validators.email]],
+        healthPlan: [''],
+        dentalPlan: [''],
+      });
 
       if(this.data && this.data.name) {
         this.fillForm();
@@ -124,13 +116,10 @@ export class ModalFormUserComponent {
         role: this.data.role,
         healthPlan: this.data.healthPlan,
         dentalPlan: this.data.dentalPlan,
-        
       });
 
     }
 
     closeModal() { this.dialogRef.close(); }
 
-  
-    }
-  
+}
